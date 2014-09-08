@@ -1,28 +1,20 @@
-== README
+#Universal Rating System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## What is it?
 
-Things you may want to cover:
+An app to facilitate rating things. EVERYTHING.
 
-* Ruby version
+## Prerequisites
 
-* System dependencies
+* Ruby (~>2.1.2)
+* Bundler (~>1.6.3)
+* foreman (optional, but highly recommended)
+* PostgreSQL (or equivalent ActiveRecord-compatible database)
+* Facebook API access
+    
+## Running the project
+    bundle install
+    bundle exec rake db:create db:schema:load
+    foreman start
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Then simply go to http://localhost:5000/ in your browser.
