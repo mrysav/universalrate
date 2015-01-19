@@ -29,6 +29,14 @@
         
     <% end %>
     
+    <hr>
+    
+    <% if current_user %>
+        Want to make a new <%= link_to :thing, new_thing_path %>?
+    <% else %>
+        <%= link_to 'Sign in', '/auth/facebook' %> to make a new thing.
+    <% end %>
+    
     <% else %>
     
     <div class="text-center">
