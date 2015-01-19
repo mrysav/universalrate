@@ -8,4 +8,6 @@ class Thing < ActiveRecord::Base
     validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
     
     pg_search_scope :name_search, :against => :name, :using => [:tsearch, :trigram, :dmetaphone]
+    
+    validates :name, presence: true
 end
