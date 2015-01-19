@@ -1,0 +1,20 @@
+<%= form_for @thing, :html => { :multipart => true, :role => :form } do |t| %>
+
+<div class="form-group">
+    <%= t.label :name %>
+    <%= t.text_field :name, :class => "form-control" %>
+</div>
+
+<div class="form-group">
+    <%= t.label :image %>
+    <%= t.file_field :image %>
+</div>
+
+<div class="form-group">
+    <%= t.label :rating %>
+    <%= t.select :rating, options_for_select([1,2,3,4,5,6,7,8,9,10]), { }, { :class => "form-control" } %>
+</div>
+
+<%= t.submit "Create thing!", :class => "btn btn-default" %>
+
+<% end %>

@@ -1,0 +1,47 @@
+<div class="col-md-8 col-md-offset-2">
+
+    <form role="form" action="<%= search_path %>" method="get" >
+        <div class="form-group">
+            <%= label_tag :thing, "I want to rate..." %>
+            <%= text_field_tag :thing, params[:thing], :class => 'form-control' %>
+        </div>
+        
+        <div class="text-center">
+            <%= submit_tag "Search!", :name => nil, :class => "btn btn-default" %>
+        </div>
+    </form>
+
+</div>
+
+<% if params[:thing] != nil && params[:thing] != '' %>
+
+<div class="col-md-8 col-md-offset-2">
+    
+    <% if @things.count > 0 %>
+    
+    <h2>Results</h2>
+    
+    <hr>
+
+    <% @things.each do |t| %>
+        
+        <%= link_to t.name, thing_path(t) %>
+        
+    <% end %>
+    
+    <% else %>
+    
+    <div class="text-center">
+        <h2>Nothing turned up!</h2>
+        <% if current_user %>
+            Want to make <%= link_to params[:thing], new_thing_path %>?
+        <% else %>
+            <%= link_to 'Sign in', '/auth/facebook' %> to make "<%= params[:thing] %>".
+        <% end %>
+    </div>
+    
+    <% end %>
+    
+</div>
+
+<% end %>

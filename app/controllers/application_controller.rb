@@ -9,12 +9,19 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+      begin
+          @current_user ||= User.find(session[:user_id]) if session[:user_id]
+      rescue
+          @current_user = nil
+      end
   end
   
   def require_valid_user
-      if session[:user_id] == nil
-          redirect_to login_path, :notice => "Must be logged in to do that."
+      if session[:user_id] == nil || current_user == nil
+          respond_to do |format|
+              flash[:warning] = "Must be logged in to do that."
+              format.html { redirect_to root_path }
+          end
       end
   end
 end

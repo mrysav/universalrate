@@ -1,0 +1,19 @@
+<% if @thing.image.exists? %>
+<%= image_tag @thing.image.url(:medium), :class => "img-responsive" %>
+<% end %>
+
+<div class="text-center">
+    <%= @thing.name %><br>
+    <%= @thing.rating %> STARS (<%= @thing.num_ratings %> ratings)
+    
+    <% if current_user %>
+    
+    <%= form_tag '/rate/' + @thing.id.to_s, :role => :form, :class => "form-group" do %>
+    <%= select_tag(:rating, options_for_select([1,2,3,4,5,6,7,8,9,10]), { :class => "form-control" } ) %>
+    <%= submit_tag "Rate it", :class => "btn btn-default", :name => nil %>
+    
+    <% end %>
+    
+    <% end %>
+</div>
+

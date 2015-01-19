@@ -39,6 +39,7 @@ gem 'omniauth-facebook'
 
 # Use paperclip for file attachments
 gem 'paperclip', '~>4.2'
+gem 'paperclip-dropbox', ">= 1.1.7"
 
 # Use pg_search
 gem 'pg_search'
